@@ -1,3 +1,5 @@
+'use client';
+
 import SignupForm from '@/components/auth/signup-form';
 
 export default function SignupPage() {
@@ -18,7 +20,7 @@ export default function SignupPage() {
             </a>
           </p>
         </div>
-        <SignupForm />
+        <SignupForm OnSubmit={async (data) => console.log(data)} />
       </div>
     </div>
   )
