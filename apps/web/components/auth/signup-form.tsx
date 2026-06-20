@@ -15,6 +15,7 @@ interface SignupFormProps {
 
 export default function SignupForm({ OnSubmit }: SignupFormProps) {
 
+  // const [isSubmitting, setIsSubmitting] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<SignupFormData>({

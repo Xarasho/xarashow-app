@@ -1,6 +1,16 @@
 'use client';
 
 import SignupForm from '@/components/auth/signup-form';
+import { authClient } from '@/lib/auth/client';
+import { SignupFormData } from '@/lib/auth/schema';
+
+const handleSignup = async (data: SignupFormData) => {
+  await authClient.signUp.email({
+    name: data.name,
+    email: data.email,
+    password: data.password,
+  })
+}
 
 export default function SignupPage() {
   return (
@@ -20,7 +30,7 @@ export default function SignupPage() {
             </a>
           </p>
         </div>
-        <SignupForm OnSubmit={async (data) => console.log(data)} />
+        <SignupForm OnSubmit={handleSignup} />
       </div>
     </div>
   )
