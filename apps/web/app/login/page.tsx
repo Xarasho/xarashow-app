@@ -3,13 +3,19 @@
 import LoginForm from '@/components/auth/login-form';
 import { authClient } from '@/lib/auth/client';
 import { LoginFormData } from '@/lib/auth/schema';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+
+  const router = useRouter();
+
   const handleLogin = async (data: LoginFormData) => {
     await authClient.signIn.email({
       email: data.email,
       password: data.password,
     });
+
+    router.push('/');
   };
 
   return (

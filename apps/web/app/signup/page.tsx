@@ -3,16 +3,25 @@
 import SignupForm from '@/components/auth/signup-form';
 import { authClient } from '@/lib/auth/client';
 import { SignupFormData } from '@/lib/auth/schema';
-
-const handleSignup = async (data: SignupFormData) => {
-  await authClient.signUp.email({
-    name: data.name,
-    email: data.email,
-    password: data.password,
-  })
-}
+import { useRouter } from 'next/navigation';
 
 export default function SignupPage() {
+  
+  const router = useRouter();
+
+  const handleSignup = async (data: SignupFormData) => {
+    await authClient.signUp.email({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    });
+    await authClient.signIn.email({
+      email: data.email,
+      password: data.password,
+    });
+    router.push('/');
+  };
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-background py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
