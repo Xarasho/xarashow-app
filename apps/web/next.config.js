@@ -7,6 +7,14 @@ const nextConfig = {
         destination: `${process.env.API_URL}/api/:path*`,
       }
     ]
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      }
+    ]
   }
 };
 
