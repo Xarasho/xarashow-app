@@ -1,5 +1,9 @@
+'use client'
+
 import Image from "next/image";
+import { Heart, MessageCircle, MessageCircleIcon } from "lucide-react";
 import { Card } from "../ui/card";
+import { Button } from "../ui/button";
 
 interface Post {
   id: string;
@@ -87,6 +91,53 @@ export default function Feed() {
               />
             </div>
 
+            <div className="p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {}}
+                    className="p-0 h-auto"
+                  >
+                    <Heart className="w-6 h-6 text-foreground" />
+                  </Button>
+                  
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {}}
+                    className="p-0 h-auto"
+                  >
+                    <MessageCircle className="w-6 h-6 text-foreground" />
+                  </Button>
+                </div>
+              </div>
+
+              <div className="text-sm font-semibold">
+                {post.likes} likes
+              </div>
+
+              <div className="text-sm">
+                <span className="font-semibold">
+                  {post.user.username}{" "}
+                </span>
+                {post.caption}
+              </div>
+            
+              {
+                post.comments > 0 && (
+                  <div className="text-sm text-muted-foreground">
+                    View all {post.comments} comments
+                  </div>
+                )
+              }
+
+              <div className="text-sm text-muted-foreground uppercase">
+                {post.timestamp}
+              </div>
+
+            </div>
           </Card>
         ))
       }
